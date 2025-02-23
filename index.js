@@ -35,7 +35,7 @@
 
 
     app.get('/', (req, res) => {
-        res.send('Hello to the swizzy backend!');
+        res.send('<h1>Hello to the swiggy backend!</h1>');
     });
 
     app.listen(PORT, () => {        
