@@ -27,6 +27,9 @@ const addFirm = async (req, res) => {
         if (!vendor) {
             return res.status(400).json({ message: "Vendor not found" });
         }
+        if(vendor.firm.length > 0){
+            return res.status(400).json({ message: "Vendor can only add one firm" });
+        }
 
         const firm = new FirmModel({
             firmName,
@@ -39,9 +42,11 @@ const addFirm = async (req, res) => {
         });
 
         const savedFirm = await firm.save();
+        const firmId = savedFirm._id;
+        console.log("Firm ID:", firmId);
         vendor.firm.push(savedFirm);
         await vendor.save();
-        return res.status(200).json({ message: "Firm added successfully" });
+        return res.status(200).json({ message: "Firm added successfully",firmId });
 
     } catch (error) {
         console.log(error);
