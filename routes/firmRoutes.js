@@ -2,6 +2,8 @@
     const firmController = require('../controllers/firmController');
     const router = express.Router();
     const verifyToken = require('../middleware/verifyToken');
+    const path = require("path");
+
 
     router.post('/add-firm', verifyToken, firmController.addFirm);
 
