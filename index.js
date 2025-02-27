@@ -16,7 +16,7 @@
     .then(() => {
         console.log('Database connected');
     })
-    .catch((err) => log.error(err));
+    .catch((err) => console.log(err));
 
 
 
